@@ -1,5 +1,5 @@
 import { ChangeEvent, useEffect, useState } from "react";
-import { convertRates, getAllRates, getCountries } from "../../services/api";
+import { convertRates, getAllRates } from "../../services/api";
 import { countries } from '../../data';
 import Swal from 'sweetalert2';
 import { Cotacoes, Header, InfoCotacoes, Title } from "./style";
