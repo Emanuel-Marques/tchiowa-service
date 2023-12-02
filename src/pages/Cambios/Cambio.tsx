@@ -15,17 +15,11 @@ export function Cambio() {
      setAllConversionRates(allRates.conversion_rates);
     }
     rates();
-    async function getFlags () {
-        const flags = await getCountries();
-        setcountryFlag(flags);
-    }
-    getFlags();
   },[]);
   const [allConversionRates, setAllConversionRates] = useState<ResponseObject>({});
   const [amount, setAmount] = useState(1);
   const [currentBase, setCurrentBase] = useState("");
   const [currentRate, setCurrentRate] = useState("");
-  const [countryFlag, setcountryFlag] = useState({});
   const [conversionResult, setConversionResult] = useState(0);
   const [isActive, setIsAtive] = useState(false);
 
