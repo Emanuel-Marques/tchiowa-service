@@ -1,5 +1,5 @@
 export async function getAllRates(){
-  const response = await fetch('https://v6.exchangerate-api.com/v6/6e2c522ebe1303dd1af254c0/latest/AOA');
+  const response = await fetch('https://v6.exchangerate-api.com/v6/6e2c522ebe1303dd1af254c0/latest/USD');
   const rates = await response.json();
   return rates;
 }

@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { convertRates, getAllRates, getCountries } from "../../services/api";
 import { countries } from '../../data';
 import Swal from 'sweetalert2';
-import { Cotacoes, InfoCotacoes } from "./style";
+import { Cotacoes, Header, InfoCotacoes, Title } from "./style";
 import { MdOutlineCurrencyExchange } from "react-icons/md"
 
 type ResponseObject = {
@@ -67,17 +67,22 @@ export function Cambio() {
 
     return (
     <>
-      <div>
+      <Title>
+        <h1>Thiowa <span>Câmbios</span></h1>
+      </Title>
+      <Header>
+      <section>
         <label htmlFor="">
           Valor:
-          <input
+        </label>
+        <input
             type="text"
             onChange={ (event) => handleChange(event) }
           />
-        </label>
         <label htmlFor="">
           De:
-          <select
+        </label>
+        <select
             name=""
             onChange={ (event) => setCurrentBase(event.target.value) }
             id=""
@@ -90,10 +95,10 @@ export function Cambio() {
                 ))
             }
           </select>
-        </label>
         <label htmlFor="">
           Para: 
-          <select
+        </label>
+        <select
             name=""
             onChange={ (event) => setCurrentRate(event.target.value) }
             id=""
@@ -106,33 +111,32 @@ export function Cambio() {
                 ))
             }
           </select>
-        </label>
         <button
           onClick={ handleClickConverter }
         >
          Converter
         </button>
+        </section>
         {
             isActive && (
               <div>
                 <p>{ `${amount} ${currentBase} =`}</p>
                 <h2>
-                    { `${conversionResult} ${currentRate}` }</h2>
+                    { `${conversionResult} ${currentRate}` }
+                </h2>
               </div>
             )
         }
-      </div>
+      </Header>
       <Cotacoes>
         <div>
-          <h1>Valores referentes a 1 AOA - Kwanza Angolano</h1>
+          <h1>Valores referentes a 1 USD - Dólar Americano</h1>
         </div>
         {
             Object.keys(allConversionRates).map((conversionRate: string) => (
               <InfoCotacoes key={ conversionRate }>
-                <div>
                   <MdOutlineCurrencyExchange />
-                  <h3>{ conversionRate }</h3>
-                </div>
+                  <h4>{ conversionRate }</h4>
                 <p>{ allConversionRates[conversionRate] }</p>
               </InfoCotacoes>    
             ))
