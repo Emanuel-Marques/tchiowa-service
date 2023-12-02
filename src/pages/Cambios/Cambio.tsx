@@ -33,16 +33,26 @@ export function Cambio() {
       setIsAtive(false);
       if(!Number.isNaN(parseInt(event.target.value))){
         setAmount(parseInt(event.target.value));
+      } else {
+        if(event.target.value === ""){
+            Swal.fire({
+                title: 'Ops...',
+                text: `Você precisa passar um número`,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+            return;
+          }
       }
       
     }
 
     async function handleClickConverter(){
       try {
-        if(amount < 0){
+        if(amount <= 0){
             Swal.fire({
                 title: 'Erro!',
-                text: `O valor não pode ser menor que 0`,
+                text: `O valor não pode ser menor ou igual 0`,
                 icon: 'error',
                 confirmButtonText: 'Cool'
             });
@@ -121,9 +131,9 @@ export function Cambio() {
             isActive && (
               <div>
                 <p>{ `${amount} ${currentBase} =`}</p>
-                <h2>
+                <h1>
                     { `${conversionResult} ${currentRate}` }
-                </h2>
+                </h1>
               </div>
             )
         }

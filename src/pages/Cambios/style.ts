@@ -59,4 +59,7 @@ export const Header = styled.div`
     flex-flow: column;
     gap: 10px;
   }
+  h1 {
+    color: #96EB95; 
+  }
 `;
